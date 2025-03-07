@@ -1,0 +1,65 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <label for="first-name">First Name <span>*</span></label>
+  <input type="text" id="first-name" formControlName="firstName" />
+  @if (formGroup.controls.firstName.errors !== null &&
+  formGroup.controls.firstName.touched) {
+  <p>This field is required</p>
+  }
+
+  <label for="last-name">Last Name <span>*</span></label>
+  <input type="text" id="last-name" formControlName="lastName" />
+  @if (formGroup.controls.lastName.errors !== null &&
+  formGroup.controls.lastName.touched) {
+  <p>This field is required</p>
+  }
+
+  <label for="email">Email Address <span>*</span></label>
+  <input type="email" id="email" formControlName="email" />
+  @if (formGroup.controls.email.errors !== null &&
+  formGroup.controls.email.touched) { @if
+  (formGroup.controls.email.errors["email"]) {
+  <p>Please enter a valid email address</p>
+  } @else {
+  <p>This field is required</p>
+  } }
+
+  <label for="queryType">Query Type <span>*</span></label>
+  <input
+    type="radio"
+    name="queryType"
+    id="general-enquiry"
+    value="general-enquiry"
+    formControlName="queryType"
+  />
+  <label for="general-enquiry">General Enquiry</label>
+  <input
+    type="radio"
+    name="queryType"
+    id="support-request"
+    value="support-request"
+    formControlName="queryType"
+  />
+  <label for="support-request">Support Request</label>
+  @if (formGroup.controls.queryType.errors !== null &&
+  formGroup.controls.queryType.touched) {
+  <p>Please select a query type</p>
+  }
+
+  <label for="message">Message <span>*</span></label>
+  <input type="textArea" id="message" formControlName="message" />
+  @if (formGroup.controls.message.errors !== null &&
+  formGroup.controls.message.touched) {
+  <p>This field is required</p>
+  }
+
+  <input type="checkbox" id="consent" formControlName="consent" />
+  <label for="consent">
+    I consent to being contacted by the team <span>*</span></label
+  >
+  @if (formGroup.controls.consent.errors !== null &&
+  formGroup.controls.consent.touched) {
+  <p>To submit this form, please consent to being contacted</p>
+  }
+
+  <button type="submit">Submit</button>
+</form>
