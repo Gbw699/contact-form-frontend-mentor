@@ -16,10 +16,11 @@
         ? $Red
         : $Grey500
     "
+    aria-required="true"
   />
   @if (formGroup.controls.firstName.invalid &&
   formGroup.controls.firstName.touched) {
-  <p class="error-message">This field is required</p>
+  <p class="error-message" aria-live="polite">This field is required</p>
   }
   <!-- First name -->
 
@@ -35,10 +36,11 @@
         ? $Red
         : $Grey500
     "
+    aria-required="true"
   />
   @if (formGroup.controls.lastName.invalid &&
   formGroup.controls.lastName.touched) {
-  <p class="error-message">This field is required</p>
+  <p class="error-message" aria-live="polite">This field is required</p>
   }
   <!-- Last name -->
 
@@ -54,12 +56,15 @@
         ? $Red
         : $Grey500
     "
+    aria-required="true"
   />
   @if (formGroup.controls.email.invalid && formGroup.controls.email.touched) {
   @if (formGroup.controls.email.errors?.["email"]) {
-  <p class="error-message">Please enter a valid email address</p>
+  <p class="error-message" aria-live="polite">
+    Please enter a valid email address
+  </p>
   } @else {
-  <p class="error-message">This field is required</p>
+  <p class="error-message" aria-live="polite">This field is required</p>
   } }
   <!-- Email -->
 
@@ -85,6 +90,7 @@
           id="general-enquiry"
           value="general-enquiry"
           formControlName="queryType"
+          aria-required="true"
         />
         <span class="checkmark"></span>
       </div>
@@ -109,6 +115,7 @@
           id="support-request"
           formControlName="queryType"
           value="support-request"
+          aria-required="true"
         />
         <span class="checkmark"></span>
       </div>
@@ -117,7 +124,7 @@
 
     @if (formGroup.controls.queryType.invalid &&
     formGroup.controls.queryType.touched) {
-    <p class="error-message">Please select a query type</p>
+    <p class="error-message" aria-live="polite">Please select a query type</p>
     }
   </fieldset>
   <!-- Radio buttons -->
@@ -134,23 +141,30 @@
         ? $Red
         : $Grey500
     "
+    aria-required="true"
   ></textarea>
   @if (formGroup.controls.message.invalid && formGroup.controls.message.touched)
   {
-  <p class="error-message">This field is required</p>
+  <p class="error-message" aria-live="polite">This field is required</p>
   }
   <!-- Message -->
 
   <!-- Checkbox -->
   <div class="checkbox-input-container">
-    <input type="checkbox" id="consent" formControlName="consent" />
+    <input
+      type="checkbox"
+      id="consent"
+      formControlName="consent"
+      aria-describedby="consent-error"
+      aria-required="true"
+    />
     <label for="consent">
       I consent to being contacted by the team <span>*</span></label
     >
   </div>
   @if (formGroup.controls.consent.invalid && formGroup.controls.consent.touched)
   {
-  <p class="error-message">
+  <p id="consent-error" class="error-message" aria-live="polite">
     To submit this form, please consent to being contacted
   </p>
   }
