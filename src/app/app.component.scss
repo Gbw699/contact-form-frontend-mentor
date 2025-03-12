@@ -32,30 +32,73 @@
       outline: none;
     }
   }
-  .radio-input-container {
-    margin: 0.5rem 0;
+  .radio-group-container {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0;
+    border: none;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    .radio-input-label-container {
+    .legend {
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .radio-container {
       @include m.input-padding;
-      display: flex;
+      display: grid;
       align-items: center;
+      grid-template-columns: 1rem 1fr;
       gap: 0.5rem;
+      transition: background-color 0.2s;
       &:hover {
         cursor: pointer;
       }
-      input {
-        &:hover {
-          cursor: pointer;
+      .custom-input {
+        border: 1px solid s.$Grey500;
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: border-color 0.2s;
+        input {
+          position: absolute;
+          opacity: 0;
+          width: 0;
+          height: 0;
+          &:hover {
+            cursor: pointer;
+          }
+          &:checked + .checkmark {
+            display: inline-block;
+            opacity: 1;
+          }
+        }
+        .checkmark {
+          width: calc(100% - 4px);
+          height: calc(100% - 4px);
+          border-radius: 50%;
+          background-color: s.$Green600;
+          opacity: 0;
+          transition: opacity 0.2s;
         }
       }
+      .selected {
+        border-color: s.$Green600;
+      }
+
       label {
         width: 100%;
         &:hover {
           cursor: pointer;
         }
       }
+    }
+    .selected {
+      background-color: s.$Green200;
+      border-color: s.$Green600;
     }
   }
   .text-area {

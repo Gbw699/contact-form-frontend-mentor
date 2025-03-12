@@ -3,6 +3,7 @@
 <form class="container" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <h1 class="title">Contact Us</h1>
 
+  <!-- First name -->
   <label class="label" for="first-name">First Name <span>*</span></label>
   <input
     class="input"
@@ -20,7 +21,9 @@
   formGroup.controls.firstName.touched) {
   <p class="error-message">This field is required</p>
   }
+  <!-- First name -->
 
+  <!-- Last name -->
   <label class="label" for="last-name">Last Name <span>*</span></label>
   <input
     class="input"
@@ -37,7 +40,9 @@
   formGroup.controls.lastName.touched) {
   <p class="error-message">This field is required</p>
   }
+  <!-- Last name -->
 
+  <!-- Email -->
   <label class="label" for="email">Email Address <span>*</span></label>
   <input
     class="input"
@@ -56,35 +61,68 @@
   } @else {
   <p class="error-message">This field is required</p>
   } }
+  <!-- Email -->
 
-  <label class="label" for="queryType">Query Type <span>*</span></label>
-  <div class="radio-input-container">
-    <div class="radio-input-label-container">
-      <input
-        type="radio"
-        name="queryType"
-        id="general-enquiry"
-        value="general-enquiry"
-        formControlName="queryType"
-      />
-      <label for="general-enquiry">General Enquiry</label>
-    </div>
-    <div class="radio-input-label-container">
-      <input
-        type="radio"
-        name="queryType"
-        id="support-request"
-        value="support-request"
-        formControlName="queryType"
-      />
-      <label for="support-request">Support Request</label>
-    </div>
-  </div>
-  @if (formGroup.controls.queryType.invalid &&
-  formGroup.controls.queryType.touched) {
-  <p class="error-message">Please select a query type</p>
-  }
+  <!-- Radio buttons -->
+  <fieldset class="radio-group-container">
+    <legend class="legend">Query Type <span>*</span></legend>
 
+    <label
+      class="radio-container"
+      [class.selected]="
+        formGroup.controls.queryType.value === 'general-enquiry'
+      "
+    >
+      <div
+        class="custom-input"
+        [class.selected]="
+          formGroup.controls.queryType.value === 'general-enquiry'
+        "
+      >
+        <input
+          type="radio"
+          name="queryType"
+          id="general-enquiry"
+          value="general-enquiry"
+          formControlName="queryType"
+        />
+        <span class="checkmark"></span>
+      </div>
+      General Enquiry
+    </label>
+
+    <label
+      class="radio-container"
+      [class.selected]="
+        formGroup.controls.queryType.value === 'support-request'
+      "
+    >
+      <div
+        class="custom-input"
+        [class.selected]="
+          formGroup.controls.queryType.value === 'support-request'
+        "
+      >
+        <input
+          type="radio"
+          name="queryType"
+          id="support-request"
+          formControlName="queryType"
+          value="support-request"
+        />
+        <span class="checkmark"></span>
+      </div>
+      Support Request
+    </label>
+
+    @if (formGroup.controls.queryType.invalid &&
+    formGroup.controls.queryType.touched) {
+    <p class="error-message">Please select a query type</p>
+    }
+  </fieldset>
+  <!-- Radio buttons -->
+
+  <!-- Message -->
   <label class="label" for="message">Message <span>*</span></label>
   <textarea
     class="text-area"
@@ -101,7 +139,9 @@
   {
   <p class="error-message">This field is required</p>
   }
+  <!-- Message -->
 
+  <!-- Checkbox -->
   <div class="checkbox-input-container">
     <input type="checkbox" id="consent" formControlName="consent" />
     <label for="consent">
@@ -114,6 +154,7 @@
     To submit this form, please consent to being contacted
   </p>
   }
+  <!-- Checkbox -->
 
   <button class="submit-btn" type="submit">Submit</button>
 </form>
