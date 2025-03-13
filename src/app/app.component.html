@@ -79,7 +79,7 @@
       "
     >
       <div
-        class="custom-input"
+        class="custom-radio"
         [class.selected]="
           formGroup.controls.queryType.value === 'general-enquiry'
         "
@@ -104,7 +104,7 @@
       "
     >
       <div
-        class="custom-input"
+        class="custom-radio"
         [class.selected]="
           formGroup.controls.queryType.value === 'support-request'
         "
@@ -150,18 +150,20 @@
   <!-- Message -->
 
   <!-- Checkbox -->
-  <div class="checkbox-input-container">
-    <input
-      type="checkbox"
-      id="consent"
-      formControlName="consent"
-      aria-describedby="consent-error"
-      aria-required="true"
-    />
-    <label for="consent">
-      I consent to being contacted by the team <span>*</span></label
-    >
-  </div>
+  <label class="checkbox-container">
+    <div class="custom-checkbox">
+      <input
+        type="checkbox"
+        id="consent"
+        formControlName="consent"
+        aria-describedby="consent-error"
+        aria-required="true"
+      />
+      <span class="checkmark"></span>
+    </div>
+    I consent to being contacted by the team
+    <span style="display: contents">*</span>
+  </label>
   @if (formGroup.controls.consent.invalid && formGroup.controls.consent.touched)
   {
   <p id="consent-error" class="error-message" aria-live="polite">

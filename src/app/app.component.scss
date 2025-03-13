@@ -22,11 +22,11 @@
     @include m.input-padding;
     &:hover {
       cursor: pointer;
-      border-color: hsl(169, 82%, 27%) !important;
+      border-color: s.$Green600 !important;
     }
     &:focus {
       cursor: pointer;
-      border-color: hsl(169, 82%, 27%) !important;
+      border-color: s.$Green600 !important;
     }
     &:focus-visible {
       outline: none;
@@ -49,16 +49,16 @@
       display: grid;
       align-items: center;
       grid-template-columns: 1rem 1fr;
-      gap: 0.5rem;
+      gap: 1rem;
       transition: background-color 0.2s;
       &:hover {
         cursor: pointer;
       }
-      .custom-input {
+      .custom-radio {
         border: 1px solid s.$Grey500;
         border-radius: 50%;
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -107,21 +107,58 @@
     resize: none;
     &:hover {
       cursor: pointer;
-      border-color: hsl(169, 82%, 27%) !important;
+      border-color: s.$Green600 !important;
     }
     &:focus {
       cursor: pointer;
-      border-color: hsl(169, 82%, 27%) !important;
+      border-color: s.$Green600 !important;
     }
     &:focus-visible {
       outline: none;
     }
   }
-  .checkbox-input-container {
+  .checkbox-container {
     @include m.margin-space-between-form-controls;
     display: flex;
     align-items: center;
     gap: 1rem;
+    &:hover {
+      cursor: pointer;
+    }
+    .custom-checkbox {
+      border: 1px solid s.$Grey500;
+      min-width: 16px;
+      height: 16px;
+
+      input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        &:checked + .checkmark {
+          display: inline-block;
+          opacity: 1;
+        }
+        &:checked + .checkmark::before {
+          content: "✔";
+          display: block;
+          position: relative;
+          bottom: 3px;
+          left: 1px;
+          width: 12px;
+          height: 12px;
+          font-size: 1rem;
+        }
+      }
+      .checkmark {
+        width: 100%;
+        height: 100%;
+        color: white;
+        background-color: s.$Green600;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+    }
   }
   .submit-btn {
     @include m.margin-space-between-form-controls;
