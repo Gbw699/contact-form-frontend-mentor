@@ -1,5 +1,17 @@
 @let $Red = "hsl(0, 66%, 54%)"; @let $Grey500= "hsl(186, 15%, 59%)";
 
+<dialog class="dialog" #succesDialog>
+  <div class="header-container">
+    <img
+      class="img"
+      src="./assets/images/icon-success-check.svg"
+      alt="Succes check icon"
+    />
+    <h2 class="title">Message Sent!</h2>
+  </div>
+  <p class="text">Thanks for completing the form. We'll be in touch soon!</p>
+</dialog>
+
 <form class="container" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <h1 class="title">Contact Us</h1>
 
@@ -91,6 +103,7 @@
           value="general-enquiry"
           formControlName="queryType"
           aria-required="true"
+          (focus)="onRadioFocus()"
         />
         <span class="checkmark"></span>
       </div>
@@ -156,6 +169,7 @@
         type="checkbox"
         id="consent"
         formControlName="consent"
+        value="consent"
         aria-describedby="consent-error"
         aria-required="true"
       />

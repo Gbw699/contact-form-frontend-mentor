@@ -1,6 +1,55 @@
 @use "../styles.scss" as s;
 @use "../mixins.scss" as m;
 
+.dialog {
+  border: none;
+  outline: none;
+  font-family: "Karla", sans-serif;
+  background-color: s.$Grey900;
+  border-radius: 15px;
+  color: white;
+  padding: 2rem;
+  bottom: 80%;
+  max-width: 70%;
+  animation: slideIn 0.5s ease-out, slideOut 1s forwards 5s ease-in;
+  &::backdrop {
+    background-color: transparent;
+  }
+  .header-container {
+    display: flex;
+    gap: 1rem;
+    .img {
+      align-self: center;
+    }
+    .title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+  .text {
+    margin: 1rem 0 0 0;
+    grid-column: span 2;
+    color: rgba($color: s.$White, $alpha: 0.8);
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-200%);
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -53,6 +102,9 @@
       transition: background-color 0.2s;
       &:hover {
         cursor: pointer;
+      }
+      &:focus-within {
+        border-color: s.$Green600 !important;
       }
       .custom-radio {
         border: 1px solid s.$Grey500;
@@ -129,7 +181,14 @@
       border: 1px solid s.$Grey500;
       min-width: 16px;
       height: 16px;
-
+      &:hover {
+        cursor: pointer;
+        border-color: s.$Green600 !important;
+      }
+      &:focus-within {
+        cursor: pointer;
+        border: 2px solid s.$Green600 !important;
+      }
       input {
         position: absolute;
         opacity: 0;
