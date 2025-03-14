@@ -53,16 +53,42 @@
 .container {
   display: flex;
   flex-direction: column;
+  grid-template-columns: 1fr;
   padding: 1.5rem;
   background-color: s.$White;
   border-radius: 15px;
+  @media (min-width: 750px) {
+    padding: 2.5rem;
+  }
   .title {
     margin: 0;
     margin-bottom: 0.5rem;
     font-weight: 700;
   }
+  .responsive-container {
+    display: contents;
+    @media (min-width: 750px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .responsive-label {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      width: -webkit-fill-available;
+      span {
+        display: contents;
+      }
+      .input {
+        margin-top: 0.5rem;
+      }
+    }
+  }
   .label {
     @include m.margin-space-between-form-controls;
+    display: flex;
     span {
       color: s.$Green600;
     }
@@ -95,6 +121,7 @@
     }
     .radio-container {
       @include m.input-padding;
+      width: -webkit-fill-available;
       display: grid;
       align-items: center;
       grid-template-columns: 1rem 1fr;
@@ -167,6 +194,10 @@
     }
     &:focus-visible {
       outline: none;
+    }
+    @media (min-width: 750px) {
+      width: 40rem;
+      min-height: 6rem;
     }
   }
   .checkbox-container {

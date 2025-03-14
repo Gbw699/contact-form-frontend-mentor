@@ -36,8 +36,6 @@ export class AppComponent {
         this.dialogModal()?.nativeElement.close();
       }, 6000);
     }
-
-    console.log(this.formGroup.value);
   }
 
   onRadioFocus() {

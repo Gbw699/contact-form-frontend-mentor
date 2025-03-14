@@ -15,46 +15,52 @@
 <form class="container" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <h1 class="title">Contact Us</h1>
 
-  <!-- First name -->
-  <label class="label" for="first-name">First Name <span>*</span></label>
-  <input
-    class="input"
-    type="text"
-    id="first-name"
-    formControlName="firstName"
-    [style.borderColor]="
-      formGroup.controls.firstName.invalid &&
-      formGroup.controls.firstName.touched
-        ? $Red
-        : $Grey500
-    "
-    aria-required="true"
-  />
-  @if (formGroup.controls.firstName.invalid &&
-  formGroup.controls.firstName.touched) {
-  <p class="error-message" aria-live="polite">This field is required</p>
-  }
-  <!-- First name -->
+  <div class="responsive-container">
+    <!-- First name -->
+    <label class="responsive-label"
+      >First Name
+      <span>*</span>
+      <input
+        class="input"
+        type="text"
+        formControlName="firstName"
+        [style.borderColor]="
+          formGroup.controls.firstName.invalid &&
+          formGroup.controls.firstName.touched
+            ? $Red
+            : $Grey500
+        "
+        aria-required="true"
+      />
+      @if (formGroup.controls.firstName.invalid &&
+      formGroup.controls.firstName.touched) {
+      <p class="error-message" aria-live="polite">This field is required</p>
+      }
+    </label>
+    <!-- First name -->
 
-  <!-- Last name -->
-  <label class="label" for="last-name">Last Name <span>*</span></label>
-  <input
-    class="input"
-    type="text"
-    id="last-name"
-    formControlName="lastName"
-    [style.borderColor]="
-      formGroup.controls.lastName.invalid && formGroup.controls.lastName.touched
-        ? $Red
-        : $Grey500
-    "
-    aria-required="true"
-  />
-  @if (formGroup.controls.lastName.invalid &&
-  formGroup.controls.lastName.touched) {
-  <p class="error-message" aria-live="polite">This field is required</p>
-  }
-  <!-- Last name -->
+    <!-- Last name -->
+    <label class="responsive-label"
+      >Last Name <span>*</span>
+      <input
+        class="input"
+        type="text"
+        formControlName="lastName"
+        [style.borderColor]="
+          formGroup.controls.lastName.invalid &&
+          formGroup.controls.lastName.touched
+            ? $Red
+            : $Grey500
+        "
+        aria-required="true"
+      />
+      @if (formGroup.controls.lastName.invalid &&
+      formGroup.controls.lastName.touched) {
+      <p class="error-message" aria-live="polite">This field is required</p>
+      }
+    </label>
+    <!-- Last name -->
+  </div>
 
   <!-- Email -->
   <label class="label" for="email">Email Address <span>*</span></label>
@@ -84,57 +90,58 @@
   <fieldset class="radio-group-container">
     <legend class="legend">Query Type <span>*</span></legend>
 
-    <label
-      class="radio-container"
-      [class.selected]="
-        formGroup.controls.queryType.value === 'general-enquiry'
-      "
-    >
-      <div
-        class="custom-radio"
+    <div class="responsive-container">
+      <label
+        class="radio-container"
         [class.selected]="
           formGroup.controls.queryType.value === 'general-enquiry'
         "
       >
-        <input
-          type="radio"
-          name="queryType"
-          id="general-enquiry"
-          value="general-enquiry"
-          formControlName="queryType"
-          aria-required="true"
-          (focus)="onRadioFocus()"
-        />
-        <span class="checkmark"></span>
-      </div>
-      General Enquiry
-    </label>
+        <div
+          class="custom-radio"
+          [class.selected]="
+            formGroup.controls.queryType.value === 'general-enquiry'
+          "
+        >
+          <input
+            type="radio"
+            name="queryType"
+            id="general-enquiry"
+            value="general-enquiry"
+            formControlName="queryType"
+            aria-required="true"
+            (focus)="onRadioFocus()"
+          />
+          <span class="checkmark"></span>
+        </div>
+        General Enquiry
+      </label>
 
-    <label
-      class="radio-container"
-      [class.selected]="
-        formGroup.controls.queryType.value === 'support-request'
-      "
-    >
-      <div
-        class="custom-radio"
+      <label
+        class="radio-container"
         [class.selected]="
           formGroup.controls.queryType.value === 'support-request'
         "
       >
-        <input
-          type="radio"
-          name="queryType"
-          id="support-request"
-          formControlName="queryType"
-          value="support-request"
-          aria-required="true"
-        />
-        <span class="checkmark"></span>
-      </div>
-      Support Request
-    </label>
-
+        <div
+          class="custom-radio"
+          [class.selected]="
+            formGroup.controls.queryType.value === 'support-request'
+          "
+        >
+          <input
+            type="radio"
+            name="queryType"
+            id="support-request"
+            formControlName="queryType"
+            value="support-request"
+            aria-required="true"
+          />
+          <span class="checkmark"></span>
+        </div>
+        Support Request
+      </label>
+    </div>
     @if (formGroup.controls.queryType.invalid &&
     formGroup.controls.queryType.touched) {
     <p class="error-message" aria-live="polite">Please select a query type</p>
